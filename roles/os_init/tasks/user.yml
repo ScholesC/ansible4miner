@@ -1,0 +1,15 @@
+- name: sudoers
+  template:
+      src: user/sudoers
+      dest: /etc/sudoers
+      owner: root
+      group: root
+      mode: '0440'
+      validate: 'visudo -cf %s'
+
+- name: eth authorized key
+  authorized_key:
+    user: eth
+    state: present
+    key: "{{ lookup('file', '/home/eth/ansible/roles/os_init/files/id_eth_rsa.pub') }}"
+

@@ -1,0 +1,40 @@
+- name: copy zabbix-agent.deb to hosts
+  copy: 
+    src:  /home/eth/ansible/roles/os_init/files/zabbix/zabbix-agent_3.0.9-amd64.deb
+    dest: /tmp/zabbix-agent_3.0.9-amd64.deb
+- name: install zabbix-agent
+  apt: 
+    deb: "/tmp/zabbix-agent_3.0.9-amd64.deb"
+    state: present
+  environment:
+    RUNLEVEL: 1
+- name: copy zabbix config
+  template: 
+    src:  zabbix/zabbix_agentd.conf 
+    dest: /etc/zabbix/zabbix_agentd.conf
+- name: service zabbix-agent restarted
+  service: 
+    name: zabbix-agent 
+    enabled: yes 
+    state:  restarted
+- name: create dir
+  file: 
+    path: /etc/zabbix/extra 
+    state: directory
+- name: copy zabbix script
+  template: 
+    src: zabbix/process_port.py 
+    dest: /etc/zabbix/extra/process_port.py
+- name: copy zabbix checkprocess config
+  template: 
+    src: zabbix/userparameter_checkprocess.conf 
+    dest: /etc/zabbix/zabbix_agentd.d/userparameter_checkprocess.conf
+- name: copy zabbix nvidia config
+  template: 
+    src: zabbix/user_nvidia.conf
+    dest: /etc/zabbix/zabbix_agentd.d/user_nvidia.conf
+- name: service zabbix-agent restarted
+  service: 
+    name: zabbix-agent 
+    enabled: yes 
+    state: restarted

@@ -1,0 +1,7 @@
+- name: copy resolv.conf.d/base
+  template:
+    src: dns/resolv.conf.d_base
+    dest: /etc/resolvconf/resolv.conf.d/base
+    mode: 0644
+    owner: root
+    group: root

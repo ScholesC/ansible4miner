@@ -1,0 +1,7 @@
+- name: copy rc.local
+  template:
+    src: rclocal/rc.local
+    dest: /etc/rc.local
+    mode: 0755
+    owner: root
+    group: root
