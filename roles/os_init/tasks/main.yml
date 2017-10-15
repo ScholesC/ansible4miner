@@ -4,12 +4,12 @@
 - include: user.yml
 - include: rclocal.yml
 - include: miner.yml
-- include: zabbix.yml
+#- include: zabbix.yml
 - include: dns.yml
 #- include: rsyslog.yml
 #- include: vim.yml
 #- include: sysctl.yml
 #- include: nfs.yml
-#- include: service.yml
+- include: service.yml
 #- include: network.yml
 #- include: other.yml

@@ -3,12 +3,12 @@
     path: /home/eth/miner_config
     state: directory
     mode: 0755
-    owner: root
-    group: root
+    owner: eth
+    group: eth
 - name: copy startup.sh
   template:
     src: miner/startup.sh
     dest: /home/eth/miner_config/startup.sh
     mode: 0755
-    owner: root
-    group: root
+    owner: eth
+    group: eth

@@ -2,15 +2,18 @@
 sleep 1m
 #cd /home/eth/ClaymoreMiner && sh run.sh
 #cd /home/eth/eth && sh /home/eth/eth/start.bash
+
 cd  /home/eth/zec/ && ./run.sh
-gpu_type=$(nvidia-smi --query-gpu=gpu_name --format=csv,noheader | grep -oP "(?<=\s)\d+(?=\s)" | sort -u)
-case gup_type in 
+gpu_type=$(nvidia-smi --query-gpu=gpu_name --format=csv,noheader | grep -oP "(?<=\s)\d+" | sort -u)
+powerlimit=120
+
+case $gpu_type in 
     1060)
-    poqwelimir=120
+    powerlimit=120
     ;;
     1070)
     powerlimit=160
     ;;
 esac
-nvidia-smi -pm 1
-nvidia-smi -pl $powerlimit
+sudo nvidia-smi -pm 1
+sudo nvidia-smi -pl $powerlimit

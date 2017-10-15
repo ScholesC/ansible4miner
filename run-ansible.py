@@ -157,7 +157,7 @@ def main():
                         type=str)
     args = parser.parse_args()
     servers = args.servers
-    password = args.password
+    password = args.passwd
     print servers
     playbook_path='/home/eth/ansible/os_init.yml'
     extra_data={}
