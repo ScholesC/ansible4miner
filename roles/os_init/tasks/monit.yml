@@ -1,0 +1,32 @@
+- name: Update local apt cache
+  become: true
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400 #One day
+
+- name: install monit
+  apt:
+    name: monit
+    state: present
+
+- name: copy monitrc
+  template:
+    src: monit/monitrc
+    dest: /etc/monit/monitrc
+    mode: 0600
+    owner: root
+    group: root
+
+- name: copy monit nvidia file
+  template:
+    src: monit/nvidia
+    dest: /etc/monit/conf.d/nvidia
+    mode: 0600
+    owner: root
+    group: root
+    
+
+- service:
+    name: monit
+    state: restarted
+    enabled: yes

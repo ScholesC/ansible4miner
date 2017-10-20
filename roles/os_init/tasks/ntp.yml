@@ -1,4 +1,4 @@
-- name: Update local ntp cache
+- name: Update local apt cache
   become: true
   apt:
     update_cache: yes

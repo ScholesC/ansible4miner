@@ -6,3 +6,11 @@
 - service:
     name: ntp
     enabled: yes
+
+- service:
+    name: monit
+    enabled: yes
+
+- service:
+    name: lightdm
+    enabled: no

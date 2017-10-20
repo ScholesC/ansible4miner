@@ -1,0 +1,3 @@
+check program nvidia
+	with path "/usr/bin/nvidia-smi"
+	if status != 0 for 2 cycles then exec "/sbin/reboot"
