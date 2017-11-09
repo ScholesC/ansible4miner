@@ -5,6 +5,7 @@
     mode: 0755
     owner: eth
     group: eth
+
 - name: copy startup.sh
   template:
     src: miner/startup.sh

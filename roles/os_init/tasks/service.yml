@@ -1,16 +1,16 @@
-- service:
-    name: ntp
-    state: started
+- name: enable service
+  service:
+    name: "{{ item }}"
     enabled: yes
+    state: restarted
+  with_items:
+      - ntp
+      - monit
 
-- service:
-    name: ntp
-    enabled: yes
-
-- service:
-    name: monit
-    enabled: yes
-
-- service:
-    name: lightdm
+- name: disable service
+  service:
+    name: "{{ item }}"
     enabled: no
+    state: stopped
+  with_items:
+      - lightdm

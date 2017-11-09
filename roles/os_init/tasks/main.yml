@@ -1,16 +1,9 @@
 - include: ssh.yml
+- include: apt.yml
 - include: hostname.yml
-- include: ntp.yml
 - include: monit.yml
 - include: user.yml
 - include: rclocal.yml
 - include: miner.yml
 - include: dns.yml
 - include: service.yml
-#- include: zabbix.yml
-#- include: rsyslog.yml
-#- include: vim.yml
-#- include: sysctl.yml
-#- include: nfs.yml
-#- include: network.yml
-#- include: other.yml

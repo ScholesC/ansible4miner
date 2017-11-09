@@ -3,7 +3,6 @@
   when: inventory_hostname != "scu100"
 
 - name: Update /etc/hostname file
-#  when: is_debian_or_ubuntu
   action: lineinfile dest=/etc/hostname regexp=.* line={{inventory_hostname}} create=yes
 
 #- name: Update /etc/sysconfig/network file
