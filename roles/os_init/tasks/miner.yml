@@ -13,3 +13,13 @@
     mode: 0755
     owner: eth
     group: eth
+
+- name: rsync some folders
+  synchronize:
+    src: /home/eth/xmr/
+    dest: /home/etc/xmr/
+    recursive: yes
+    rsync_opts:
+      - "--no-motd"
+      - "--exclude=.git"
+
