@@ -1,5 +1,9 @@
 #!/bin/bash
 sleep 1m
+
+
+
+
 #cd /home/eth/ClaymoreMiner && sh run.sh
 #cd /home/eth/eth && sh /home/eth/eth/start.bash
 
