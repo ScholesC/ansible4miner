@@ -8,7 +8,7 @@ sleep 1m
 #cd /home/eth/eth && sh /home/eth/eth/start.bash
 
 cd  /home/eth/zec/ && ./run.sh
-gpu_type=$(nvidia-smi --query-gpu=gpu_name --format=csv,noheader | grep -oP "(?<=\s)\d+" | sort -u)
+gpu_type=$(nvidia-smi --query-gpu=gpu_name --format=csv,noheader | grep -oP "(?<=\s)\d{2,}" | sort -u)
 powerlimit=120
 
 case $gpu_type in 
