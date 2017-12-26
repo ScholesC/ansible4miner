@@ -16,6 +16,8 @@ esac
 sudo nvidia-smi -pm 1
 sudo nvidia-smi -pl $powerlimit
 
+sleep 60
+
 # start miner
 while true
 do
