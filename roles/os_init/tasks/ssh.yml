@@ -1,4 +1,13 @@
-- name: sshd config file
+- name: sshd_config file update
   template: src=ssh/sshd_config dest=/etc/ssh/sshd_config
+  mode: 0644
+  owner: root
+  group: root
   notify:
       - restart sshd
+
+- name: ssh_config file update
+  template: src=ssh/ssh_config dest=/etc/ssh/ssh_config
+  mode: 0644
+  owner: root
+  group: root
