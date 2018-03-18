@@ -19,14 +19,7 @@ sudo nvidia-smi -pl $powerlimit
 sleep 60
 
 # start miner
-while true
-do
-    if [[ $(nvidia-smi --query-compute-apps=process_name --format=csv,noheader | wc -l) -lt 1 ]]
-    then
-        #cd /home/eth/ClaymoreMiner && sh run.sh
-        #cd /home/eth/eth && sh /home/eth/eth/start.bash
-        cd  /home/eth/zec/ && ./run.sh
-        #cd /home/eth/ccminer && ./run.sh
-    fi
-    sleep 30
-done
+#cd /home/eth/ClaymoreMiner && sh run.sh
+#cd /home/eth/eth && sh /home/eth/eth/start.bash
+cd  /home/eth/zec/ && ./run.sh
+#cd /home/eth/ccminer && ./run.sh
