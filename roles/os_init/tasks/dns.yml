@@ -5,3 +5,8 @@
     mode: 0644
     owner: root
     group: root
+
+- blockinfile: |
+        dest=/etc/resolv.conf
+        content="223.5.5.5
+              223.6.6.6"
