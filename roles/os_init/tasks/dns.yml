@@ -8,5 +8,5 @@
 
 - blockinfile: |
         dest=/etc/resolv.conf
-        content="223.5.5.5
-              223.6.6.6"
+        content="nameserver 223.5.5.5
+              nameserver 223.6.6.6"
