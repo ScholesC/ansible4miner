@@ -13,3 +13,4 @@
       - screen
       - ntp
       - monit
+      - htop
