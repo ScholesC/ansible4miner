@@ -14,7 +14,8 @@
     owner: root
     group: root
 
-- service:
+- name: restart monit service
+  service:
     name: monit
     state: restarted
     enabled: yes

@@ -13,3 +13,10 @@
     state: present
     key: "{{ lookup('file', '/home/eth/ansible/roles/os_init/files/id_eth_rsa.pub') }}"
 
+- name: set password of eth
+  vars:
+    password: $6$f.lCymvb$4NMxF91zurgCO0H.t5AJrL7uOL5f.upzrqtLf1n3LFMRz1ihcTduE5vCr9b9GKNOQ3L0gF4ce2nuMELmVwxT2.
+  user:
+    name: eth
+    password: "{{password}}"
+    
