@@ -1,13 +1,13 @@
-- name: copy apt source list
-  template:
-    src: "{{ item }}"
-    dest: /etc/"{{ item }}"
-    mode: 0755
-    owner: root
-    group: root
-  with_items:
-    - apt/sources.list.d/influxdb.list
-    - apt/sources.list
+#- name: copy apt source list
+#  template:
+#    src: "{{ item }}"
+#    dest: /etc/"{{ item }}"
+#    mode: 0755
+#    owner: root
+#    group: root
+#  with_items:
+#    - apt/sources.list.d/influxdb.list
+#    - apt/sources.list
 
 - name: Update local apt cache
   become: true
