@@ -1,7 +1,7 @@
 - name: copy apt source list
   template:
-    src: {{ item }}
-    dest: /etc/{{ item }}
+    src: "{{ item }}"
+    dest: /etc/"{{ item }}"
     mode: 0755
     owner: root
     group: root
