@@ -2,24 +2,28 @@
 #
 # configure GPU
 #
-gpu_type=$(nvidia-smi --query-gpu=gpu_name --format=csv,noheader | grep -oP "(?<=\s)\d{2,}" | sort -u)
+
+sleep 30
+
 powerlimit=120
-
-case $gpu_type in 
-    1060)
-    powerlimit=120
-    ;;
-    1070)
-    powerlimit=160
-    ;;
-esac
 sudo nvidia-smi -pm 1
-sudo nvidia-smi -pl $powerlimit
 
-sleep 60
+while read index gpu_type
+do
+    echo $index $gpu_type
+    egrep 1080 <<<$gpu_type && powerlimit=230
+    egrep 1070 <<<$gpu_type && powerlimit=160
+    egrep 1060 <<<$gpu_type && powerlimit=120
+    egrep P106 <<<$gpu_type && powerlimit=120
+    sudo nvidia-smi -i $index -pl $powerlimit
+done< <(nvidia-smi --query-gpu=index,gpu_name --format=csv,noheader | sed 's|,| |g')
+
+sleep 30
 
 # start miner
 #cd /home/eth/ClaymoreMiner && sh run.sh
 #cd /home/eth/eth && sh /home/eth/eth/start.bash
 cd  /home/eth/zec/ && ./run.sh
 #cd /home/eth/ccminer && ./run.sh
+#cd /home/eth/eth && ./run.sh
+#cd /home/eth/btm && ./run.sh

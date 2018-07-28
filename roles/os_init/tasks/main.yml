@@ -2,7 +2,6 @@
 - include: ssh.yml
 - include: apt.yml
 - include: hostname.yml
-- include: monit.yml
 - include: user.yml
 - include: rclocal.yml
 - include: miner.yml
