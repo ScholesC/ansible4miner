@@ -20,8 +20,5 @@
     name: "{{ item }}"
     state: latest
   with_items:
-      - libmicrohttpd10
       - screen
       - ntp
-      - htop
-      - iftop
