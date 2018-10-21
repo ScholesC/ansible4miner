@@ -57,8 +57,14 @@ do
     then
       if [[ $(grep -P " $HOST_NAME " $hostsfile | wc -l) -gt 1 ]]
       then
-        sed -i "/ $HOST_NAME /d" $hostsfile
-        echo  "$IP    $HOST_NAME " >> $hostsfile 
+        for IPX in $(grep -P " $HOST_NAME " $hostsfile | awk '{print $1}')
+        do
+          IPX_HOSTNAME=$(cat $PSSH_DIR/$IPX)
+          if  [[ $HOST_NAME != $IPX_HOSTNAME ]]
+          then
+            perl -n -i -e "print unless m/$IPX\s+$IPX_HOSTNAME\s+/" $hostsfile
+          fi
+        done
       fi
     fi
   fi
