@@ -55,14 +55,17 @@ do
   else
     if [[ -n $HOST_NAME ]]
     then
-      if [[ $(grep -P " $HOST_NAME " $hostsfile | wc -l) -gt 1 ]]
+      #echo "$HOST_NAME ck"
+      if [[ $(grep -w "$HOST_NAME" $hostsfile | wc -l) -gt 1 ]]
       then
-        for IPX in $(grep -P " $HOST_NAME " $hostsfile | awk '{print $1}')
+        for IPX in $(grep -w "$HOST_NAME" $hostsfile | awk '{print $1}')
         do
+	  #echo "$HOST_NAME $IPX ck1"
           IPX_HOSTNAME=$(cat $PSSH_DIR/$IPX)
           if  [[ $HOST_NAME != $IPX_HOSTNAME ]]
           then
-            perl -n -i -e "print unless m/$IPX\s+$IPX_HOSTNAME\s+/" $hostsfile
+            echo "$IPX $HOST_NAME $IPX_HOSTNAME ck2"
+            perl -n -i -e "print unless m/$IPX\s+$HOST_NAME\s+/" $hostsfile
           fi
         done
       fi
