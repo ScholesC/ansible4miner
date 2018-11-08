@@ -9,11 +9,22 @@
 #    - apt/sources.list
 ##    - apt/sources.list.d/influxdb.list
 
+- name: remove files and directories under /var/lib/apt/lists/
+  file:
+    state: "{{ item }}"
+    path: "/var/lib/apt/lists/"
+    owner: root
+    group: root
+    mode: '0755'
+  with_items:
+    - absent
+    - directory
+
 - name: Update local apt cache
   become: true
   apt:
     update_cache: yes
-    cache_valid_time: 86400 #One day
+#    cache_valid_time: 86400 #One day
 
 - name: install packages
   apt:
