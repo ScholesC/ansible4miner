@@ -34,7 +34,7 @@
       - screen
       - ntp
 
-- name: Remove "foo" package
+- name: Remove package
   apt:
     name: "{{ item }}"
     state: absent
