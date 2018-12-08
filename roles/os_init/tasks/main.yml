@@ -4,6 +4,7 @@
 - include: apt.yml
 - include: nvidia.yml
 - include: user.yml
+- include: limits.yml
 - include: rclocal.yml
 - include: miner.yml
 - include: service.yml
