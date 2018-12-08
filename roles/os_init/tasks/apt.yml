@@ -9,16 +9,16 @@
 #    - apt/sources.list
 ##    - apt/sources.list.d/influxdb.list
 
-#- name: remove files and directories under /var/lib/apt/lists/
-#  file:
-#    state: "{{ item }}"
-#    path: "/var/lib/apt/lists/"
-#    owner: root
-#    group: root
-#    mode: '0755'
-#  with_items:
-#    - absent
-#    - directory
+- name: remove files and directories under /var/lib/apt/lists/
+  file:
+    state: "{{ item }}"
+    path: "/var/lib/apt/lists/"
+    owner: root
+    group: root
+    mode: '0755'
+  with_items:
+    - absent
+    - directory
 
 - name: Update local apt cache
   become: true
@@ -33,3 +33,10 @@
   with_items:
       - screen
       - ntp
+
+- name: Remove "foo" package
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - supervisor

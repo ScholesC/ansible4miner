@@ -1,0 +1,13 @@
+- name: copy NVIDIA-Linux-Latest.run to remote
+  copy:
+    src:  /home/eth/cuda/NVIDIA-Linux-Latest.run
+    dest: /tmp/NVIDIA-Linux-Latest.run
+    mode: 0755
+    owner: root
+    group: root
+
+- name: uninstall nvidia driver
+  command: nvidia-uninstall -s
+
+- name: install latest nvidia driver
+  command: /tmp/NVIDIA-Linux-Latest.run --no-x-check -sX

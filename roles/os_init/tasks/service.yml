@@ -13,3 +13,4 @@
     state: stopped
   with_items:
       - lightdm
+

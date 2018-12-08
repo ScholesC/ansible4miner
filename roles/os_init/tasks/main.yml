@@ -1,7 +1,8 @@
+- include: hostname.yml
 - include: dns.yml
 - include: ssh.yml
 - include: apt.yml
-- include: hostname.yml
+- include: nvidia.yml
 - include: user.yml
 - include: rclocal.yml
 - include: miner.yml
