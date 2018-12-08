@@ -1,4 +1,4 @@
--name: copy /etc/security/limits.d/miner.conf
+- name: copy /etc/security/limits.d/miner.conf
   template:
     src: limits/miner.conf
     dest: /etc/security/limits.d/miner.conf
