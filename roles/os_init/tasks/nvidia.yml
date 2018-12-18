@@ -6,8 +6,14 @@
     owner: root
     group: root
 
+- name: check if nvidia-uninstall exists
+  shell: command -v nvidia-uninstall >/dev/null 2>&1
+  register: nvidia_uninstall
+  ignore_errors: yes
+
 - name: uninstall nvidia driver
   command: nvidia-uninstall -s
+  when: nvidia_uninstall.rc == 0
 
 - name: install latest nvidia driver
   command: /tmp/NVIDIA-Linux-Latest.run --no-x-check -sX
