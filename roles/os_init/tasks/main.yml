@@ -8,3 +8,5 @@
 - include: rclocal.yml
 - include: miner.yml
 - include: service.yml
+- include: zabbix.yml
+
