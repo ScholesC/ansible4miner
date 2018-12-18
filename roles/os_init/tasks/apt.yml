@@ -4,12 +4,10 @@
   until: apt_result|success
   retries: 3
   delay: 1
-  sudo: yes
   ignore_errors: yes
 
 - name: retry if needed using command apt-get update
   command: apt-get update
-  sudo: yes
   when: apt_result|failed
 
 - name: install packages
