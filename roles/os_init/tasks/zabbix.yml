@@ -1,10 +1,10 @@
 - name: copy zabbix-agent.deb to hosts
   copy: 
-    src:  /home/eth/ansible/roles/os_init/files/zabbix/zabbix-release_4.0-2+trusty_all.deb
-    dest: /tmp/zabbix-release_4.0-2+trusty_all.deb
+    src:  /home/eth/package/zabbix-agent-latest.deb
+    dest: /tmp/zabbix-agent-latest.deb
 - name: install zabbix-agent
   apt: 
-    deb: "/tmp/zabbix-release_4.0-2+trusty_all.deb"
+    deb: "/tmp/zabbix-agent-latest.deb"
     state: present
   environment:
     RUNLEVEL: 1
