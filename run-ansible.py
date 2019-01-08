@@ -156,7 +156,7 @@ def main():
                         required=True,
                         type=str)
     parser.add_argument("-t", "--type", help="btm 或者 rvn",
-                        action="store", dest='m_type', choices=['btm'],
+                        action="store", dest='m_type', choices=['btm', 'rvn', 'ae'],
                         required=True,
                         type=str)
     parser.add_argument("-a", "--addr", help="钱包地址",

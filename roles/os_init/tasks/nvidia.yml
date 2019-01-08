@@ -1,6 +1,6 @@
 - name: copy NVIDIA-Linux-Latest.run to remote
   copy:
-    src:  /home/eth/cuda/NVIDIA-Linux-Latest.run
+    src:  /home/eth/ansible/cuda/NVIDIA-Linux-Latest.run
     dest: /tmp/NVIDIA-Linux-Latest.run
     mode: 0755
     owner: root
