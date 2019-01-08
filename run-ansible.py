@@ -155,15 +155,31 @@ def main():
                         action="store", dest='passwd',
                         required=True,
                         type=str)
+    parser.add_argument("-t", "--type", help="btm 或者 rvn",
+                        action="store", dest='m_type', choices=['btm'],
+                        required=True,
+                        type=str)
+    parser.add_argument("-a", "--addr", help="钱包地址",
+                        action="store", dest='m_addr',
+                        required=True,
+                        type=str)
     args = parser.parse_args()
     servers = args.servers
     password = args.passwd
+    m_type = args.m_type
+    m_addr = args.m_addr
     print servers
     playbook_path='/home/eth/ansible/os_init.yml'
     extra_data={}
     extra_data['ansible_sudo_pass']=password
     extra_data['ansible_ssh_pass']=password
     run_playbook(servers,playbook_path,extra_data)
+    server_list = " ".join(servers)
+    print(servers, m_addr, m_type, password, server_list)
+    os.system('pssh -i -H {0} "rm -rvf /home/eth/{1}"'.format(server_list, m_type))
+    os.system('echo {0} > {1}/{1}/address.txt'.format(m_addr, m_type))
+    os.system('prsync -av -H {0} {1}/ /home/eth/'.format(server_list, m_type))
+
 
 if __name__ == "__main__":
     try:
