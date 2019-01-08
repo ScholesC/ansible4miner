@@ -176,9 +176,10 @@ def main():
     run_playbook(servers,playbook_path,extra_data)
     server_list = " ".join(servers)
     print(servers, m_addr, m_type, password, server_list)
-    os.system('pssh -i -H {0} "rm -rvf /home/eth/{1}"'.format(server_list, m_type))
+    os.system('pssh -i -H "{0}" "rm -rvf /home/eth/{1}"'.format(server_list, m_type))
+    print('pssh -i -H "{0}" "rm -rvf /home/eth/{1}"'.format(server_list, m_type))
     os.system('echo {0} > {1}/{1}/address.txt'.format(m_addr, m_type))
-    os.system('prsync -av -H {0} {1}/ /home/eth/'.format(server_list, m_type))
+    os.system('prsync -av -H "{0}" {1}/ /home/eth/'.format(server_list, m_type))
 
 
 if __name__ == "__main__":
