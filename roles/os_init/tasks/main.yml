@@ -3,10 +3,10 @@
 - include: ssh.yml
 - include: apt.yml
 - include: service.yml
-- include: nvidia.yml
 - include: user.yml
 - include: limits.yml
 - include: rclocal.yml
 - include: miner.yml
 - include: zabbix.yml
-
+- include: process.yml
+- include: nvidia.yml

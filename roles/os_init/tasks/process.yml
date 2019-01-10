@@ -1,0 +1,6 @@
+- name: Kill running processes
+  shell: "pkill -9 -f {{ item }}"
+  with_items: 
+    - miner
+    - Miner
+    - t-rex
