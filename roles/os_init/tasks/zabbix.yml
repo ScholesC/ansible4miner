@@ -1,6 +1,6 @@
 - name: copy zabbix-agent.deb to hosts
   copy: 
-    src:  /home/eth/package/zabbix-agent-latest.deb
+    src:  /home/eth/ansible/package/zabbix-agent-latest.deb
     dest: /tmp/zabbix-agent-latest.deb
 - name: install zabbix-agent
   apt: 
