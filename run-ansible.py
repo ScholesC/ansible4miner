@@ -177,8 +177,8 @@ def main():
     if m_addr and m_type:
         server_list = " ".join(servers)
         os.system('pssh -i -H "{0}" "rm -rvf /home/eth/{1}"'.format(server_list, m_type))
-        os.system('echo {0} > {1}/{1}/address.txt'.format(m_addr, m_type))
-        os.system('prsync -av -H "{0}" {1}/ /home/eth/'.format(server_list, m_type))
+        os.system('echo {0} > miners/{1}/{1}/address.txt'.format(m_addr, m_type))
+        os.system('prsync -av -H "{0}" miners/{1}/ /home/eth/'.format(server_list, m_type))
         os.system('pssh -i -H "{0}" "sudo reboot"'.format(server_list, m_type))
 
 
