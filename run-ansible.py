@@ -164,7 +164,7 @@ def main():
                         required=False,
                         type=str)
     parser.add_argument("-d", "--dtype", help="初始化 或者 推送挖矿软件",
-                        action="store", dest='m_type', choices=['os_init', 'miner', 'all'],
+                        action="store", dest='m_dtype', choices=['os_init', 'miner', 'all'],
                         default="os_init",
                         required=False,
                         type=str)
