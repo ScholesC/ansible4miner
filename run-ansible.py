@@ -173,13 +173,13 @@ def main():
     password = args.passwd
     m_type = args.m_type
     m_addr = args.m_addr
-    dtype = args.dtype
+    m_dtype = args.m_dtype
     print servers
     playbook_path='/home/eth/ansible/os_init.yml'
     extra_data={}
     extra_data['ansible_sudo_pass']=password
     extra_data['ansible_ssh_pass']=password
-    if dtype == "os_init" or dtype == "all":
+    if m_dtype == "os_init" or m_dtype == "all":
         run_playbook(servers,playbook_path,extra_data)
     if m_addr and m_type:
         server_list = " ".join(servers)
