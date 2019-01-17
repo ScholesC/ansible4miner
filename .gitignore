@@ -2,8 +2,6 @@
 hosts
 *.retry
 .idea
-btm/
-rvn/
-ae/
 cuda/
 package/
+miners/
