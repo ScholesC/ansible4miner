@@ -156,12 +156,12 @@ def main():
                         required=True,
                         type=str)
     parser.add_argument("-t", "--type", help="btm 或者 rvn",
-                        action="store", dest='m_type', choices=['btm', 'rvn', 'ae'],
-                        required=True,
+                        action="store", dest='m_type', choices=['btm', 'rvn', 'ae', 'grin'],
+                        required=False,
                         type=str)
     parser.add_argument("-a", "--addr", help="钱包地址",
                         action="store", dest='m_addr',
-                        required=True,
+                        required=False,
                         type=str)
     args = parser.parse_args()
     servers = args.servers
@@ -174,13 +174,12 @@ def main():
     extra_data['ansible_sudo_pass']=password
     extra_data['ansible_ssh_pass']=password
     run_playbook(servers,playbook_path,extra_data)
-    server_list = " ".join(servers)
-    print(servers, m_addr, m_type, password, server_list)
-    os.system('pssh -i -H "{0}" "rm -rvf /home/eth/{1}"'.format(server_list, m_type))
-    print('pssh -i -H "{0}" "rm -rvf /home/eth/{1}"'.format(server_list, m_type))
-    os.system('echo {0} > {1}/{1}/address.txt'.format(m_addr, m_type))
-    os.system('prsync -av -H "{0}" {1}/ /home/eth/'.format(server_list, m_type))
-    os.system('pssh -i -H "{0}" "sudo reboot"'.format(server_list, m_type))
+    if m_addr and m_type:
+        server_list = " ".join(servers)
+        os.system('pssh -i -H "{0}" "rm -rvf /home/eth/{1}"'.format(server_list, m_type))
+        os.system('echo {0} > {1}/{1}/address.txt'.format(m_addr, m_type))
+        os.system('prsync -av -H "{0}" {1}/ /home/eth/'.format(server_list, m_type))
+        os.system('pssh -i -H "{0}" "sudo reboot"'.format(server_list, m_type))
 
 
 if __name__ == "__main__":
