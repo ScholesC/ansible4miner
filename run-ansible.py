@@ -179,7 +179,7 @@ def main():
     extra_data={}
     extra_data['ansible_sudo_pass']=password
     extra_data['ansible_ssh_pass']=password
-    if dtype = "os_init" or dtype = "all":
+    if dtype == "os_init" or dtype == "all":
         run_playbook(servers,playbook_path,extra_data)
     if m_addr and m_type:
         server_list = " ".join(servers)
