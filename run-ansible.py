@@ -163,17 +163,24 @@ def main():
                         action="store", dest='m_addr',
                         required=False,
                         type=str)
+    parser.add_argument("-d", "--dtype", help="初始化 或者 推送挖矿软件",
+                        action="store", dest='m_type', choices=['os_init', 'miner', 'all'],
+                        default="os_init",
+                        required=False,
+                        type=str)
     args = parser.parse_args()
     servers = args.servers
     password = args.passwd
     m_type = args.m_type
     m_addr = args.m_addr
+    dtype = args.dtype
     print servers
     playbook_path='/home/eth/ansible/os_init.yml'
     extra_data={}
     extra_data['ansible_sudo_pass']=password
     extra_data['ansible_ssh_pass']=password
-    run_playbook(servers,playbook_path,extra_data)
+    if dtype = "os_init" or dtype = "all":
+        run_playbook(servers,playbook_path,extra_data)
     if m_addr and m_type:
         server_list = " ".join(servers)
         os.system('pssh -i -H "{0}" "rm -rvf /home/eth/{1}"'.format(server_list, m_type))
