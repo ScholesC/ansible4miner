@@ -11,7 +11,7 @@ sudo nvidia-smi -pm 1
 while read index gpu_type
 do
     echo $index $gpu_type
-    egrep 1080 <<<$gpu_type && powerlimit=210
+    egrep 1080 <<<$gpu_type && powerlimit=200
     egrep 1070 <<<$gpu_type && powerlimit=140
     egrep 1060 <<<$gpu_type && powerlimit=100
     egrep P106 <<<$gpu_type && powerlimit=100
