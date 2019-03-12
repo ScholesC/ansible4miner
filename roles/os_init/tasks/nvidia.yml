@@ -18,9 +18,9 @@
 
 - name: uninstall nvidia driver
   command: nvidia-uninstall -s
-  when: nvidia_uninstall.rc == 0 and nvidia_driver_version.stdout != "396.18"
+  when: nvidia_uninstall.rc == 0 and nvidia_driver_version.stdout != "418.43"
 
 - name: install latest nvidia driver
   command: /tmp/NVIDIA-Linux-Latest.run --no-x-check --no-nouveau-check -sX
-  when: nvidia_uninstall.rc != 0 or nvidia_driver_version.stdout != "396.18"
+  when: nvidia_uninstall.rc != 0 or nvidia_driver_version.stdout != "418.43"
   
