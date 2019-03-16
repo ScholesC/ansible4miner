@@ -21,10 +21,4 @@ done< <(nvidia-smi --query-gpu=index,gpu_name --format=csv,noheader | sed 's|,| 
 sleep 30
 
 # start miner
-#cd /home/eth/ClaymoreMiner && sh run.sh
-#cd /home/eth/eth && sh /home/eth/eth/start.bash
-#cd  /home/eth/zec/ && ./run.sh
-#cd /home/eth/ccminer && ./run.sh
-#cd /home/eth/eth && ./run.sh
-#cd /home/eth/btm && ./run.sh
-cd /home/eth/hspminer && ./run.sh
+bash /home/eth/miner_config/miner.sh
