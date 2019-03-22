@@ -21,4 +21,4 @@ done< <(nvidia-smi --query-gpu=index,gpu_name --format=csv,noheader | sed 's|,| 
 sleep 30
 
 # start miner
-bash /home/eth/miner_config/miner.sh
+cd /home/eth/beam && ./run.sh
