@@ -24,8 +24,8 @@ class ResultCallback(CallbackBase):
         self.host_failed = {}
         self.list_=[]
     def v2_runner_on_unreachable(self, result):
-        print result._host, result._task.get_name()
-        print result._result
+        print(result._host, result._task.get_name())
+        print(result._result)
         self.list_=[]
         if result._host.get_name() in self.host_unreachable.keys():
             self.list_=self.host_unreachable[result._host.get_name()]
@@ -36,7 +36,7 @@ class ResultCallback(CallbackBase):
         self.host_unreachable[key] = self.list_
         #self.host_unreachable[result._host.get_name()] = result
     def v2_runner_on_ok(self, result,  *args, **kwargs):
-        print result._host, result._task.get_name()
+        print(result._host, result._task.get_name())
         #print result._task.get_name()
         #print result._result
         self.list_=[]
@@ -70,8 +70,8 @@ class ResultCallback(CallbackBase):
         #self.host_ok[result._task.get_name()] = result._result['changed']
         #self.host_ok[result._host.get_name()] = result._task
     def v2_runner_on_failed(self, result,  *args, **kwargs):
-        print result._host, result._task.get_name()
-        print result._result
+        print(result._host, result._task.get_name())
+        print(result._result)
         self.list_=[]
         if result._host.get_name() in self.host_failed.keys():
             self.list_=self.host_failed[result._host.get_name()]
@@ -176,7 +176,7 @@ def main():
     m_type = args.m_type
     m_addr = args.m_addr
     m_dtype = args.m_dtype
-    print servers
+    print(servers)
     playbook_path='/home/eth/ansible/os_init.yml'
     extra_data={}
     extra_data['ansible_sudo_pass']=password
@@ -195,6 +195,6 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        print "\nExiting......\n"
+        print("\nExiting......\n")
         sys.exit(0)
     
