@@ -146,6 +146,8 @@ def run_command(host_list,command):
     return results_raw
     
 def main():
+    thedir = "/home/eth/ansible"
+    m_dtype_choices = [ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
     parser = argparse.ArgumentParser(description="矿机初始化脚本")
     parser.add_argument("-s", "--servers", help="机器",
                         action="store", dest='servers',
@@ -156,7 +158,7 @@ def main():
                         required=True,
                         type=str)
     parser.add_argument("-t", "--type", help="btm 或者 rvn",
-                        action="store", dest='m_type', choices=['btm', 'rvn', 'ae', 'grin', 'beam', 'grin31'],
+                        action="store", dest='m_type', choices=m_dtype_choices,
                         required=False,
                         type=str)
     parser.add_argument("-a", "--addr", help="钱包地址",
