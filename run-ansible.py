@@ -146,7 +146,7 @@ def run_command(host_list,command):
     return results_raw
     
 def main():
-    thedir = "/home/eth/ansible"
+    thedir = "/home/eth/ansible/miners"
     m_dtype_choices = [ name for name in os.listdir(thedir) if os.path.isdir(os.path.join(thedir, name)) ]
     parser = argparse.ArgumentParser(description="矿机初始化脚本")
     parser.add_argument("-s", "--servers", help="机器",
