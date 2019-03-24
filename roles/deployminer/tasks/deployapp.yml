@@ -7,7 +7,7 @@
 
 - name: minersapp
   synchronize:
-    src: /home/eth/ansible/miners/{{ miner_name }}/miner_config
+    src: /home/eth/ansible/miners/{{ miner_name }}/miner_config/
     dest: /home/eth/miner_config/
     delete: true
     recursive: yes
