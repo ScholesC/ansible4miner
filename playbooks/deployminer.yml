@@ -3,9 +3,9 @@
 #  any_errors_fatal: True
   remote_user: eth
   hosts: all
-  become: True
-  become_user: root
-  become_method: sudo
+  #become: True
+  #become_user: root
+  #become_method: sudo
   serial:
   - 20
   roles:
