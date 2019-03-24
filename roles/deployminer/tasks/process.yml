@@ -2,7 +2,4 @@
   shell: "pkill -9 -f {{ item }}"
   ignore_errors: yes
   with_items: 
-    - miner
-    - Miner
-    - t-rex
     - pool
