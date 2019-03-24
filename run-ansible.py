@@ -176,20 +176,19 @@ def main():
     m_type = args.m_type
     m_addr = args.m_addr
     m_dtype = args.m_dtype
-    print(servers)
-    playbook_path='/home/eth/ansible/os_init.yml'
     extra_data={}
-    extra_data['ansible_sudo_pass']=password
-    extra_data['ansible_ssh_pass']=password
+    extra_data['ansible_sudo_pass'] = password
+    extra_data['ansible_ssh_pass'] = password
     server_list = " ".join(servers)
+    print(servers)
     if m_dtype == "os_init" or m_dtype == "all":
+        playbook_path='/home/eth/ansible/os_init.yml'
         run_playbook(servers,playbook_path,extra_data)
     if m_addr and m_type:
-        os.system('pssh -i -H "{0}" "sudo pkill -f pool"'.format(server_list))
-        os.system('pssh -i -H "{0}" "rm -rvf /home/eth/{1}"'.format(server_list, m_type))
-        os.system('echo {0} > miners/{1}/{1}/address.txt'.format(m_addr, m_type))
-        os.system('prsync -av -H "{0}" miners/{1}/ /home/eth/'.format(server_list, m_type))
-        os.system('pssh -i -H "{0}" "cd /home/eth/{1} && ./run.sh"'.format(server_list, m_type))
+        extra_data['miner_name'] = m_type
+        extra_data['miner_addr'] = m_addr
+        playbook_path='/home/eth/ansible/miners.yml'
+        run_playbook(servers,playbook_path,extra_data)
 
 if __name__ == "__main__":
     try:

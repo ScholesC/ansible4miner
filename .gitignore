@@ -2,6 +2,7 @@
 hosts
 *.retry
 .idea
+.swp
 cuda/
 package/
 miners/

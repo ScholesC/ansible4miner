@@ -1,0 +1,19 @@
+- name: minersapp
+  synchronize:
+    src: /home/eth/ansible/miners/{{ miner_name }}/
+    dest: /home/eth/{{ miner_name }}
+    delete: yes
+    recursive: yes
+
+- name: update address.txt under miner apps folder
+  template:
+    src: address.j2
+    dest: /home/eth/{{ miner_name }}/address.txt
+    mode: 0644
+    owner: eth
+    group: eth
+
+- name: start miner app
+  command: ./run.sh
+  args:
+    chdir: /home/eth/{{ miner_name }}
