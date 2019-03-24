@@ -21,7 +21,11 @@
     group: eth
 
 - name: start miner app
-  command: chdir=/home/eth/{{ miner_name }} ./run.sh
+  command: ./run.sh
+  async: 45
+  poll: 0
+  args:
+    chdir: /home/eth/{{ miner_name }}
   become: True
   become_user: eth
   become_method: su
