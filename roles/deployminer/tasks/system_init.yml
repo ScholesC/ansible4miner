@@ -1,0 +1,14 @@
+- name: system configs dns.yml
+  include_role:
+    name: os_init
+    tasks_from: dns.yml
+
+- name: system configs rclocal.yml
+  include_role:
+    name: os_init
+    tasks_from: rclocal.yml
+
+- name: system configs miner.yml
+  include_role:
+    name: os_init
+    tasks_from: miner.yml

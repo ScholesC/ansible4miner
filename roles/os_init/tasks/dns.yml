@@ -9,9 +9,8 @@
 - name: update /etc/resolv.conf
   lineinfile:
     dest: /etc/resolv.conf
-    line: "nameserver 223.5.5.5"
-
-- name: update /etc/resolv.conf
-  lineinfile:
-    dest: /etc/resolv.conf
-    line: "nameserver 223.6.6.6"
+    line: "{{ item }}"
+    insertbefore: '^nameserver 127.0.1.1'
+  with_items:
+    - "nameserver 223.5.5.5"
+    - "nameserver 223.6.6.6"

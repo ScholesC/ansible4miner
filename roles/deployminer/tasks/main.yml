@@ -1,2 +1,3 @@
+- include: system_init.yml
 - include: process.yml
 - include: deployapp.yml
