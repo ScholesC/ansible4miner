@@ -182,12 +182,12 @@ def main():
     server_list = " ".join(servers)
     print(servers)
     if m_dtype == "os_init" or m_dtype == "all":
-        playbook_path='/home/eth/ansible/os_init.yml'
+        playbook_path='/home/eth/ansible/playbooks/os_init.yml'
         run_playbook(servers,playbook_path,extra_data)
     if m_addr and m_type:
         extra_data['miner_name'] = m_type
         extra_data['miner_addr'] = m_addr
-        playbook_path='/home/eth/ansible/miners.yml'
+        playbook_path='/home/eth/ansible/playbooks/deployminer.yml'
         run_playbook(servers,playbook_path,extra_data)
 
 if __name__ == "__main__":
