@@ -7,7 +7,11 @@
     group: root
 
 - name: update /etc/resolv.conf
-  blockinfile: |
-        dest=/etc/resolv.conf
-        content="nameserver 223.5.5.5
-              nameserver 223.6.6.6"
+  lineinfile:
+    dest: /etc/resolv.conf
+    line: "nameserver 223.5.5.5"
+
+- name: update /etc/resolv.conf
+  lineinfile:
+    dest: /etc/resolv.conf
+    line: "nameserver 223.6.6.6"
