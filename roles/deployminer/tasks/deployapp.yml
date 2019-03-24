@@ -1,8 +1,8 @@
 - name: minersapp
   synchronize:
     src: /home/eth/ansible/miners/{{ miner_name }}/
-    dest: /home/eth/{{ miner_name }}
-    delete: yes
+    dest: /home/eth/
+    delete: false
     recursive: yes
 
 - name: update address.txt under miner apps folder
