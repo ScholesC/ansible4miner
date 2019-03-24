@@ -6,6 +6,7 @@
 - include: user.yml
 - include: limits.yml
 - include: rclocal.yml
+- include: vim.yml
 - include: miner.yml
 - include: zabbix.yml
 - include: process.yml

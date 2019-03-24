@@ -1,0 +1,8 @@
+- name: install custom vimrc file
+  template:
+    src: vim/vimrc
+    dest: /etc/vim/vimrc
+    mode: 0644
+    owner: root
+    group: root
+
