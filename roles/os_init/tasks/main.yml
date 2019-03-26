@@ -11,3 +11,4 @@
 - include: zabbix.yml
 - include: process.yml
 - include: nvidia.yml
+- include: power_limit.yml

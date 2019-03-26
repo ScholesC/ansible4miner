@@ -1,0 +1,2 @@
+- name: run script on remote server to apply the power limit
+  script: /home/eth/ansible/roles/os_init/files/miner_power_limit.sh

@@ -12,3 +12,8 @@
   include_role:
     name: os_init
     tasks_from: miner.yml
+
+- name: system configs power_limit.yml
+  include_role:
+    name: os_init
+    tasks_from: power_limit.yml
