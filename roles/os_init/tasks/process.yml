@@ -3,4 +3,3 @@
   ignore_errors: yes
   with_items: 
     - pool
-    - miner
