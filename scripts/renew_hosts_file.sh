@@ -14,7 +14,6 @@ int_name=$(ip -o addr | grep -oP "eth\d+" | sort -u)
 IP_LIST=$(sudo arp-scan --interface $int_name --localnet | egrep ^192.168 | awk '{print $1}')
 PSSH_DIR=/tmp/PSSHDIR_$$
 mkdir $PSSH_DIR
-#echo 23835261 | sshpass -ppassword pssh -o $PSSH_DIR -t 5 -p 100 -H "$IP_LIST" 'uname -n' &>/dev/null
 pssh -o $PSSH_DIR -t 5 -p 100 -H "$IP_LIST" 'uname -n' &>/dev/null
 empty_file_list=$(find $PSSH_DIR -empty -printf "%f\n")
 sshpass -f /home/eth/remotePasswordFile pssh -O " PreferredAuthentications=password" -O " PubkeyAuthentication=no" -A -o $PSSH_DIR -t 5 -p 100 -H "$empty_file_list" 'uname -n' &>/dev/null
