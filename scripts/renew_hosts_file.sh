@@ -10,7 +10,7 @@ if ! grep -P "127.0.0.1\s+$HOSTNAME\s+localhost" $hostsfile
 then
   echo "127.0.0.1  $HOSTNAME localhost" >> $hostsfile
 fi
-int_name=$(ip -o addr | grep -oP "eth\d+" | sort -u)
+int_name=$(ip -o addr | grep "inet 192" | awk '{print $2}' | sort -u)
 IP_LIST=$(sudo arp-scan --interface $int_name --localnet | egrep ^192.168 | awk '{print $1}')
 PSSH_DIR=/tmp/PSSHDIR_$$
 mkdir $PSSH_DIR
