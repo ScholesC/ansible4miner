@@ -18,6 +18,11 @@
     state: link
     force: yes
 
+- name: remove /usr/local/cuda-8.0
+  file:
+    path: /usr/local/cuda-8.0
+    state: absent
+
 - name: check if nvidia-uninstall exists
   shell: command -v nvidia-uninstall >/dev/null 2>&1
   register: nvidia_uninstall
