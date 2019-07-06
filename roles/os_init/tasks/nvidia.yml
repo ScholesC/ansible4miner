@@ -11,7 +11,7 @@
     src: /home/eth/ansible/cuda10.tgz
     dest: /usr/local/cuda-10.0
 
--name: /usr/local/cuda symlink
+- name: /usr/local/cuda symlink
   file:
     src: /usr/local/cuda-10.0
     dest: /usr/local/cuda
