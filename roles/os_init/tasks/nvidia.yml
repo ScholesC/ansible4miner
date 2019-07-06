@@ -5,6 +5,11 @@
     mode: 0755
     owner: root
     group: root
+    
+- name: ensure cuda10 path exists
+  file:
+    path: /usr/local/cuda-10.0
+    state: directory
 
 - name: extract cuda10.tgz to remote server
   unarchive:
