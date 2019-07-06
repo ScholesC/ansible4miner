@@ -6,6 +6,18 @@
     owner: root
     group: root
 
+- name: extract cuda10.tgz to remote server
+  unarchive:
+    src: /home/eth/ansible/cuda10.tgz
+    dest: /usr/local/cuda-10.0
+
+-name: /usr/local/cuda symlink
+  file:
+    src: /usr/local/cuda-10.0
+    dest: /usr/local/cuda
+    state: link
+    force: yes
+
 - name: check if nvidia-uninstall exists
   shell: command -v nvidia-uninstall >/dev/null 2>&1
   register: nvidia_uninstall
