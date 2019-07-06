@@ -8,7 +8,7 @@
 
 - name: extract cuda10.tgz to remote server
   unarchive:
-    src: /home/eth/ansible/cuda10.tgz
+    src: /home/eth/ansible/cuda/cuda10.tgz
     dest: /usr/local/cuda-10.0
 
 - name: /usr/local/cuda symlink
