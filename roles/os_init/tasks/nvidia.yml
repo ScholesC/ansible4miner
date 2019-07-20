@@ -1,7 +1,16 @@
+- name: Ansible check directory exists example
+  stat:
+    path: {{ item }}
+  with_items:
+    - /usr/local/cuda-10.0
+    - /usr/local/cuda
+  register: cuda10_exists
+
 - name: extract cuda10.tgz to remote server
   unarchive:
     src: /home/eth/ansible/cuda/cuda10.tgz
     dest: /usr/local
+  when: cuda10_exists.stat.exists == False
 
 - name: /usr/local/cuda symlink
   file:
@@ -9,6 +18,7 @@
     dest: /usr/local/cuda
     state: link
     force: yes
+  when: cuda10_exists.stat.exists == False
 
 - name: remove /usr/local/cuda-8.0
   file:
@@ -34,7 +44,7 @@
     group: root
   when: nvidia_uninstall.rc == 0 and nvidia_driver_version.stdout != "430.14"
 
-- name: uninstall nvidia driver
+- name: rmmod nvidia modules
   command: rmmod {{ item }}
   with_items:
     - nvidia_drm
