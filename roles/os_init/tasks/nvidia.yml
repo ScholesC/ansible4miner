@@ -1,11 +1,3 @@
-- name: copy NVIDIA-Linux-Latest.run to remote
-  copy:
-    src:  /home/eth/ansible/cuda/NVIDIA-Linux-Latest.run
-    dest: /tmp/NVIDIA-Linux-Latest.run
-    mode: 0755
-    owner: root
-    group: root
-    
 - name: extract cuda10.tgz to remote server
   unarchive:
     src: /home/eth/ansible/cuda/cuda10.tgz
@@ -32,6 +24,24 @@
   shell: nvidia-smi --query-gpu=driver_version --format=csv,noheader | sort -u
   register: nvidia_driver_version
   when: nvidia_uninstall.rc == 0
+
+- name: copy NVIDIA-Linux-Latest.run to remote
+  copy:
+    src:  /home/eth/ansible/cuda/NVIDIA-Linux-Latest.run
+    dest: /tmp/NVIDIA-Linux-Latest.run
+    mode: 0755
+    owner: root
+    group: root
+  when: nvidia_uninstall.rc == 0 and nvidia_driver_version.stdout != "430.14"
+
+- name: uninstall nvidia driver
+  command: rmmod {{ item }}
+  with_items:
+    - nvidia_drm
+    - nvidia_modeset
+    - nvidia_uvm
+    - nvidia
+  when: nvidia_uninstall.rc == 0 and nvidia_driver_version.stdout != "430.14"
 
 - name: uninstall nvidia driver
   command: nvidia-uninstall -s
