@@ -1,6 +1,6 @@
 - name: Ansible check directory exists example
   stat:
-    path: {{ item }}
+    path: "{{ item }}"
   with_items:
     - /usr/local/cuda-10.0
     - /usr/local/cuda
@@ -45,7 +45,7 @@
   when: nvidia_uninstall.rc == 0 and nvidia_driver_version.stdout != "430.14"
 
 - name: rmmod nvidia modules
-  command: rmmod {{ item }}
+  command: rmmod "{{ item }}"
   with_items:
     - nvidia_drm
     - nvidia_modeset
