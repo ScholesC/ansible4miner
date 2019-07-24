@@ -1,4 +1,4 @@
-- name: Ansible check directory exists
+- name: check if cudaX exists
   stat:
     path: /usr/local/cuda-10.0
   register: cuda10
