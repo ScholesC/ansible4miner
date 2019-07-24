@@ -1,15 +1,13 @@
-- name: Ansible check directory exists example
+- name: Ansible check directory exists
   stat:
-    path: "{{ item }}"
-  with_items:
-    - /usr/local/cuda-10.0
-  register: cuda10_exists
+    path: /usr/local/cuda-10.0
+  register: cuda10
 
 - name: extract cuda10.tgz to remote server
   unarchive:
     src: /home/eth/ansible/cuda/cuda10.tgz
     dest: /usr/local
-  when: cuda10_exists.stat.exists == False
+  when: cuda10.stat.exists == False
 
 - name: /usr/local/cuda symlink
   file:
@@ -17,7 +15,6 @@
     dest: /usr/local/cuda
     state: link
     force: yes
-  when: cuda10_exists.stat.exists == False
 
 - name: remove /usr/local/cuda-8.0
   file:
