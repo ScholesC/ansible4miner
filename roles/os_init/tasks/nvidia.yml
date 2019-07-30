@@ -40,15 +40,6 @@
     group: root
   when: nvidia_uninstall.rc != 0 or nvidia_driver_version.stdout != "430.14"
 
-- name: rmmod nvidia modules
-  command: rmmod "{{ item }}"
-  with_items:
-    - nvidia_drm
-    - nvidia_modeset
-    - nvidia_uvm
-    - nvidia
-  when: nvidia_uninstall.rc == 0 and nvidia_driver_version.stdout != "430.14"
-
 - name: uninstall nvidia driver
   command: nvidia-uninstall -s
   when: nvidia_uninstall.rc == 0 and nvidia_driver_version.stdout != "430.14"
