@@ -5,7 +5,7 @@
 
 sleep 30
 
-powerlimit=120
+powerlimit=100
 sudo nvidia-smi -pm 1
 
 while read index gpu_type
@@ -15,6 +15,7 @@ do
     egrep -i p102 <<<$gpu_type && powerlimit=210
     egrep 1070 <<<$gpu_type && powerlimit=140
     egrep -i p104 <<<$gpu_type && powerlimit=150
+    egrep 1660 <<<$gpu_type && powerlimit=100
     egrep 1060 <<<$gpu_type && powerlimit=100
     egrep -i P106 <<<$gpu_type && powerlimit=100
     sudo nvidia-smi -i $index -pl $powerlimit
