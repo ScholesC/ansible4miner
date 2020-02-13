@@ -4,6 +4,7 @@
     dest: /home/eth/{{ miner_name }}/
     delete: true
     archive: yes
+    checksum: yes
 
 - name: minersapp
   synchronize:
