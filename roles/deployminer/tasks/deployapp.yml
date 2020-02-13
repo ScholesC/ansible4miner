@@ -3,14 +3,15 @@
     src: /home/eth/ansible/miners/{{ miner_name }}/{{ miner_name }}/
     dest: /home/eth/{{ miner_name }}/
     delete: true
-    recursive: yes
+    archive: yes
 
 - name: minersapp
   synchronize:
     src: /home/eth/ansible/miners/{{ miner_name }}/miner_config/
     dest: /home/eth/miner_config/
     delete: true
-    recursive: yes
+    archive: yes
+    checksum: yes
 
 - name: update address.txt under miner apps folder
   template:
