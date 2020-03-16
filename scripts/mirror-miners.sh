@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #
-if [[ $(pgrep -c rsync) -lt 10 ]]
+if [[ $(pgrep -c rsync) -lt 6 ]]
 then
   timenow=$(date +%H%m)
 
